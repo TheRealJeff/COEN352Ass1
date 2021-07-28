@@ -53,9 +53,14 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
   	@return the record removed, or null if none exists. */
 	public E removeAny()
 	{
-		// to be honest, I have no clue what this method is asking us to do
-		// will do later
-		return null;
+		//Removes the first KV pair in the LList
+		pairs.moveToStart();
+
+		if ( pairs.getValue().key() != null ) {
+			return pairs.remove();
+		}
+		else
+			return null;
 	}
 
 	/** @return A record matching "k" (null if none exists).

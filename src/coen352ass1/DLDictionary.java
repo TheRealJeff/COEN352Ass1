@@ -51,8 +51,14 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	  @return the record removed, or null if none exists. */
 	public E removeAny()
 	{
-		// again, not sure what is needed here
-		return null;
+		//Removes the first KV pair in the DList
+		pairs.moveToStart();
+
+		if ( pairs.getValue().key() != null ) {
+			return pairs.remove();
+		}
+		else
+			return null;
 	}
 
 	/** @return A record matching "k" (null if none exists).
