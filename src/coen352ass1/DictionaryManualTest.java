@@ -1,8 +1,4 @@
-package coen352.ch4.dictionary;
-
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
+package coen352ass1;
 
 
 public class DictionaryManualTest {

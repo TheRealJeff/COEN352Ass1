@@ -7,7 +7,7 @@ Copyright 2008-2011 by Clifford A. Shaffer
 */
 
 /** Container class for a key-value pair */
-class KVpair<Key, E> {
+class KVpair <Key, E> {
 private Key k;
 private E e;
 

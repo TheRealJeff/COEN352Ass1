@@ -1,12 +1,10 @@
-package coen352.ch4.dictionary;
+package coen352ass1;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import coen352.ch4.list.ADTList;
 
 public class DictionaryJUnitTest {
 	

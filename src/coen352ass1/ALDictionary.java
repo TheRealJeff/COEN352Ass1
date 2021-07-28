@@ -1,6 +1,5 @@
 package coen352ass1;
 
-
 /** Source code example for "A Practical Introduction to Data
 Structures and Algorithm Analysis, 3rd Edition (Java)" 
 by Clifford A. Shaffer
@@ -29,7 +28,7 @@ public class ALDictionary<Key, E> implements ADTDictionary<Key, E> {
 	public void clear() { 
 		list.clear(); 
 	}
-	
+
 	/** Insert an element: append to list */
 	public void insert(Key k, E e) {
 		KVpair<Key,E> temp = new KVpair<Key,E>(k, e);
@@ -56,7 +55,7 @@ public class ALDictionary<Key, E> implements ADTDictionary<Key, E> {
 		else 
 			return null;
 	}
-	
+
 	/** Find k using sequential search
 	  @return Record with key value k */
 	public E find(Key k) {
