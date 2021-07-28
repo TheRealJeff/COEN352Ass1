@@ -1,7 +1,7 @@
 package coen352ass1;
 
 
-// problem 1: implementing a linked-list based implementation 
+// problem 1: implementing a linked-list based implementation
 public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
 
 	// store a linked list of key-value pairs
@@ -57,7 +57,9 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
 		pairs.moveToStart();
 
 		if ( pairs.getValue().key() != null ) {
-			return pairs.remove();
+			E toRet = pairs.getValue().value(); // return value where key is found
+			pairs.remove(); // remove pair at curr
+			return toRet;
 		}
 		else
 			return null;
