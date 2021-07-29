@@ -24,7 +24,7 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	public void insert(Key k, E e)
 	{
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
-		pairs.insert(toAdd);
+		pairs.append(toAdd);
 	}
 
 	/** Remove and return a record.
@@ -53,13 +53,12 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
   	@return the record removed, or null if none exists. */
 	public E removeAny()
 	{
-		//Removes the first KV pair in the LList
-		pairs.moveToStart();
-
-		if ( pairs.getValue().key() != null ) {
-			E toRet = pairs.getValue().value(); // return value where key is found
-			pairs.remove(); // remove pair at curr
-			return toRet;
+		//Removes the last KV pair in the LList
+		if ( size() != 0 ) {
+			pairs.moveToEnd();
+			pairs.prev();
+			KVpair<Key, E> e = pairs.remove();
+			return e.value();
 		}
 		else
 			return null;
