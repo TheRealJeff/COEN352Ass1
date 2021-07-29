@@ -18,12 +18,14 @@ public class DictionaryJUnitTest {
 	}
 
 	@Test
+	//Should pass
 	void testClear() {
 		dict.clear();
 		assertEquals(0, dict.size(), "clear failed, size is non zero");
 	}
 
 	@Test
+	//Should pass
 	void testInsert() {
 		dict.clear();
 		dict.insert(0, "red");
@@ -34,8 +36,8 @@ public class DictionaryJUnitTest {
 	}
 
 	@Test
+	//Should fail
 	void testRemove() {
-		
 		dict.clear();
 		dict.insert(0, "red");
 		dict.insert(1, "blue");
@@ -43,11 +45,12 @@ public class DictionaryJUnitTest {
 		dict.insert(3, "grey");
 		
 		dict.remove(3);
-		assertEquals("grey", dict.find(3), "remove failed"); 
+		assertEquals("grey", dict.find(3), "remove failed");
 		
 	}
 
 	@Test
+	//Should fail
 	void testRemoveAny() {
 		dict.clear();
 		dict.insert(0, "red");
@@ -56,12 +59,10 @@ public class DictionaryJUnitTest {
 		dict.insert(3, "grey");
 		assertNotEquals("grey", dict.removeAny(), "removeAny failed");
 
-		//test comment
-
-
 	}
 
 	@Test
+	//Should pass
 	void testFind() {
 		
 		dict.clear();
@@ -74,6 +75,7 @@ public class DictionaryJUnitTest {
 	}
 
 	@Test
+	//Should pass
 	void testSize() {
 		dict.clear();
 		dict.insert(0, "red");
