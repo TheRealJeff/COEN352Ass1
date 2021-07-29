@@ -23,18 +23,10 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
   	@param e The record being inserted. */
 	public void insert(Key k, E e)
 	{
-		pairs.moveToStart();
-		for(int i = 0; i < pairs.length(); i++)
-		{
-			if(k == pairs.getValue())
-			{
-				pairs.moveToStart();
-				return;
-			}
-			pairs.next();
-		}
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
-		pairs.append(toAdd);
+		if ( find( k ) != null ) {
+			pairs.append(toAdd);
+		}
 	}
 
 	/** Remove and return a record.

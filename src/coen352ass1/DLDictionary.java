@@ -22,18 +22,10 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	public void insert(Key k, E e)
 	{
 		// ensure the key does not already exist in the dictionary
-		pairs.moveToStart();
-		for(int i = 0; i < pairs.length(); i++)
-		{
-			if(k == pairs.getValue())
-			{
-				pairs.moveToStart();
-				return;
-			}
-			pairs.next();
-		}
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
-		pairs.append(toAdd);
+		if ( find( k ) != null ) {
+			pairs.append(toAdd);
+		}
 	}
 
 	/** Remove and return a record.
