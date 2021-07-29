@@ -1,6 +1,6 @@
 package coen352ass1;
 
-
+// ADD: CHECK TO ENSURE KEY IS UNIQUE
 // problem 3: DList-based dictionary implementation
 public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 
@@ -21,6 +21,17 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	  @param e The record being inserted. */
 	public void insert(Key k, E e)
 	{
+		// ensure the key does not already exist in the dictionary
+		pairs.moveToStart();
+		for(int i = 0; i < pairs.length(); i++)
+		{
+			if(k == pairs.getValue())
+			{
+				pairs.moveToStart();
+				return;
+			}
+			pairs.next();
+		}
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
 		pairs.append(toAdd);
 	}
