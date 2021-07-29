@@ -13,7 +13,9 @@ public class DictionaryJUnitTest {
 	  
 	@BeforeAll
 	public static void setUp() {
-		dict = new ALDictionary<Integer, String>(10);
+		//dict = new ALDictionary<Integer, String>(10);
+		//dict = new LLDictionary<Integer, String>();
+		dict = new DLDictionary<Integer, String>();
 		
 	}
 
