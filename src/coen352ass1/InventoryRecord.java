@@ -6,33 +6,39 @@ public class InventoryRecord {
 	private String bin;
 	private String location;
 	private String unit;
+	private String orderNum;
 	private long qty;
 	private long reorderQty;
 	private long cost;
-	private long inventoryValue;
-	private boolean reorderFlag;
+	// private long inventoryValue; I replaced this with a function inventory_value()
+	private long pickQty;
+	// private boolean reorderFlag; I replaced this with a function reordered()
 
-	/*public InventoryRecord()
+	public InventoryRecord()
 	{
 		description = "";
 		bin = "";
 		location = "";
 		unit = "";
 		qty = 0;
-		reorder_qty = 0;
+		reorderQty = 0;
 		cost = 0;
+		orderNum = "";
+		pickQty = 0;
 	}
 
-	public InventoryRecord(String dsc, String bn, String loc, String un, int qt, int r_qt, double cs)
+	public InventoryRecord(String dsc, String bn, String loc, String un, long qt, long r_qt, long cs, String oNum, long pick)
 	{
 		description = dsc;
 		bin = bn;
 		location = loc;
 		unit = un;
 		qty = qt;
-		reorder_qty = r_qt;
+		reorderQty = r_qt;
 		cost = cs;
-	}*/
+		orderNum = oNum;
+		pickQty = pick;
+	}
 
 	public String getSku() {
 		return sku;
@@ -97,8 +103,29 @@ public class InventoryRecord {
 	public void setCost(long cost) {
 		this.cost = cost;
 	}
+	
+	public String getOrderNum()
+	{
+		return orderNum;
+	}
+	
+	public void setOrderNum(String oNum)
+	{
+		orderNum = oNum;
+	}
+	
+	public long getPickQty()
+	{
+		return pickQty;
+	}
+	
+	public void setPickQty(long pick)
+	{
+		pickQty = pick;
+	}
 
-	public long getInventoryValue() {
+	// replaced with functions reordered() and inventory_value()
+	/*public long getInventoryValue() {
 		return inventoryValue;
 	}
 
@@ -112,14 +139,14 @@ public class InventoryRecord {
 
 	public void setReorderFlag(boolean reorderFlag) {
 		this.reorderFlag = reorderFlag;
-	}
+	}*/
 
 	//TODO: Check if we need these functions
 
 	// determine if the InventoryRecord is reordered: if reorder quantity exceeds the quantity, the inventory is reordered
 	public boolean reordered()
 	{
-		return (reorder_qty > qty);
+		return (reorderQty > qty);
 	}
 	// calculate the inventory value by finding product of quantity and cost per item
 	public double inventory_value()
@@ -134,8 +161,10 @@ public class InventoryRecord {
 		(location == toCompare.location) &&
 		(unit == toCompare.unit) &&
 		(qty == toCompare.qty) &&
-		(reorder_qty == toCompare.reorder_qty) &&
-		(cost == toCompare.cost);
+		(reorderQty == toCompare.reorderQty) &&
+		(cost == toCompare.cost) &&
+		(pickQty == toCompare.pickQty) &&
+		(orderNum == toCompare.orderNum);
 		// two InventoryRecord objects are the same iff all fields are the same
 	}
 }
