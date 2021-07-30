@@ -25,7 +25,7 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	{
 		// ensure the key does not already exist in the dictionary
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
-		if ( find( k ) != null ) {
+		if ( find( k ) == null ) {
 			pairs.append(toAdd);
 		}
 	}

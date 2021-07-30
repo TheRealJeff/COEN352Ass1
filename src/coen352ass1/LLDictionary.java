@@ -26,7 +26,7 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	public void insert(Key k, E e)
 	{
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
-		if ( find( k ) != null ) {
+		if ( find( k ) == null ) {
 			pairs.append(toAdd);
 		}
 	}
