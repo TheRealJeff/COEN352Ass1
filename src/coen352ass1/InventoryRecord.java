@@ -1,5 +1,6 @@
 package coen352ass1;
 
+// objects of this class will have all information from first two Excel sheets
 public class InventoryRecord {
 	private String sku;
 	private String description;
@@ -27,8 +28,9 @@ public class InventoryRecord {
 		pickQty = 0;
 	}
 
-	public InventoryRecord(String dsc, String bn, String loc, String un, long qt, long r_qt, long cs, String oNum, long pick)
+	public InventoryRecord(String s, String dsc, String bn, String loc, String un, long qt, long r_qt, long cs, String oNum, long pick)
 	{
+		sku = s;
 		description = dsc;
 		bin = bn;
 		location = loc;

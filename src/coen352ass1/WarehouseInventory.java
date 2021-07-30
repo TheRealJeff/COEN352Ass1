@@ -44,7 +44,31 @@ public class WarehouseInventory {
 	{
 		invRecords = new DLDictionary <String, InventoryRecord> ();
 		binRecords = new DLDictionary <String, BinRecord> ();
+		
+		// insert inventory records given in files
+		// if item is not on inventory pick list, set pickQty as 0, orderNum as ""
+		invRecords.insert("SP7875", new InventoryRecord ("SP7875", "Item 1", "T345", "Row 2, slot 1", "Each", 20, 10, 30, "TP001-1", 3));
+		invRecords.insert("TR87680", new InventoryRecord ("TR87680", "Item 2", "T345", "Row 2, slot 1", "Each", 30, 15, 40, "", 0));
+		invRecords.insert("MK676554", new InventoryRecord ("MK676554", "Item 3", "T5789", "Row 1, slot 1", "Each", 10, 5, 5, "TP001-1", 3));
+		invRecords.insert("YE98767", new InventoryRecord ("YE98767", "Item 4", "T9876", "Row 3, slot 2", "Box (10 ct)", 40, 10, 15, "TP001-1", 1));
+		invRecords.insert("XR23423", new InventoryRecord ("XR23423", "Item 5", "T098", "Row 3, slot 1", "Each", 12, 10, 26, "", 0));
+		invRecords.insert("PW98762", new InventoryRecord ("PW98762", "Item 6", "T345", "Row 2, slot 1", "Each", 7, 10, 50, "", 0));
+		invRecords.insert("BM87684", new InventoryRecord ("BM87684", "Item 7", "T349", "Row 1, slot 2", "Each", 10, 5, 10, "TP001-1", 2));
+		invRecords.insert("BH67655", new InventoryRecord ("BH67655", "Item 8", "T5789", "Row 1, slot 1", "Each", 19, 10, 3, "", 0));
+		invRecords.insert("WT98768", new InventoryRecord ("WT98768", "Item 9", "T9875", "Row 2, slot 2", "Package (5 ct)", 20, 30, 14, "", 0));
+		invRecords.insert("TS3456", new InventoryRecord ("TS3456", "Item 10", "T349", "Row 1, slot 2", "Each", 15, 8, 60, "TP001-1", 6));
+		invRecords.insert("WDG123", new InventoryRecord ("WDG123", "Item 11", "T349", "Row 1, slot 2", "Each", 25, 15, 8, "", 0));
+		
+		// insert bin records from files
+		binRecords.insert("T345", new BinRecord ("T345", "Large bin", "Row 2, slot 1", 50, 10, 10));
+		binRecords.insert("T5789", new BinRecord ("T5789", "Small bin", "Row 1, slot 1", 25, 5, 5));
+		binRecords.insert("T9876", new BinRecord ("T9876", "Large bin", "Row 3, slot 2", 50, 10, 10));
+		binRecords.insert("T098", new BinRecord ("T098", "Medium bin", "Row 3, slot 1", 30, 7, 10));
+		binRecords.insert("T349", new BinRecord ("T349", "Small bin", "Row 1, slot 2", 25, 5, 5));
+		binRecords.insert("T5789", new BinRecord ("T5789", "Large bin", "Row 4, slot 5", 50, 10, 10));
+		binRecords.insert("T9875", new BinRecord ("T9875", "Large bin", "Row 2, slot 2", 50, 10, 10));
 	}
+	
 	// insert functions: the user can insert BinRecords or InventoryRecords
 	
 	// inserting InventoryRecords
@@ -192,4 +216,3 @@ public class WarehouseInventory {
 	}
 	
 }
-

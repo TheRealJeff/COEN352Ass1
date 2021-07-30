@@ -91,7 +91,7 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	{
 		return pairs.length();
 	}
-	public KVpair <Key, E> getByIndex(int index) // needed in order 
+	public KVpair <Key, E> getByIndex(int index) // needed in order to implement some WarehouseInventory functions
 	{
 		pairs.moveToPos(index);
 		KVpair <Key, E> temp = pairs.getValue();
