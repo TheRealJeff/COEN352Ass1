@@ -4,6 +4,8 @@ package coen352ass1;
 // problem 1: implementing a linked-list based implementation
 public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
 
+	//TODO: implement new methods from the ADT
+
 	// store a linked list of key-value pairs
 	private LList<KVpair <Key, E>> pairs;
 	

@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DictionaryJUnitTest {
+
+	//TODO: modify test for new ADT methods
 	
 	
 	private static ADTDictionary<Integer, String> dict;

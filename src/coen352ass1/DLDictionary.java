@@ -4,6 +4,8 @@ package coen352ass1;
 // problem 3: DList-based dictionary implementation
 public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 
+	//TODO: implement new methods from the ADT
+
 	DList<KVpair <Key, E>> pairs; // DList holds pairs
 	DLDictionary()
 	{
