@@ -150,6 +150,6 @@ public class InventoryRecord {
 		(cost == toCompare.cost) &&
 		(pickQty == toCompare.pickQty) &&
 		(orderNum == toCompare.orderNum);
-		// two InventoryRecord objects are the same iff all fields are the same
+		// two InventoryRecord objects are called the same iff all fields are the same (except SKU)
 	}
 }

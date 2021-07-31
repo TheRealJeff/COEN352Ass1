@@ -21,6 +21,7 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
   	@param e The record being inserted. */
 	public void insert(Key k, E e)
 	{
+		// ensure the key is unique
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
 		if ( find( k ) == null ) {
 			pairs.append(toAdd);

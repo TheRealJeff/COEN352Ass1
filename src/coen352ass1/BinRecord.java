@@ -89,6 +89,6 @@ public class BinRecord {
 		(width == toCompare.width) &&
 		(height == toCompare.height) &&
 		(length == toCompare.length); 
-		// return true if two BinRecords are identical
+		// two InventoryRecord objects are called the same iff all fields are the same (except binNumber)
 	}
 }
