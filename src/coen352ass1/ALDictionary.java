@@ -6,8 +6,6 @@ by Clifford A. Shaffer
 Copyright 2008-2011 by Clifford A. Shaffer
 */
 
-
-
 /** Dictionary implemented by unsorted array-based list. */
 public class ALDictionary<Key, E> implements ADTDictionary<Key, E> {
 	

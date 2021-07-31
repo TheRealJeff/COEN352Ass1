@@ -1,7 +1,5 @@
 package coen352ass1;
 
-
-
 /** Source code example for "A Practical Introduction to Data
 Structures and Algorithm Analysis, 3rd Edition (Java)" 
 by Clifford A. Shaffer

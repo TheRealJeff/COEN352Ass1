@@ -1,7 +1,5 @@
 package coen352ass1;
 
-
-// problem 1: implementing a linked-list based implementation
 public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
 
 	// store a linked list of key-value pairs
@@ -23,8 +21,11 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
   	@param e The record being inserted. */
 	public void insert(Key k, E e)
 	{
+		// ensure the key is unique
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
-		pairs.append(toAdd);
+		if ( find( k ) == null ) {
+			pairs.append(toAdd);
+		}
 	}
 
 	/** Remove and return a record.

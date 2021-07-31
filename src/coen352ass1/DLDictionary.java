@@ -1,7 +1,5 @@
 package coen352ass1;
 
-
-// problem 3: DList-based dictionary implementation
 public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 
 	DList<KVpair <Key, E>> pairs; // DList holds pairs
@@ -21,8 +19,11 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	  @param e The record being inserted. */
 	public void insert(Key k, E e)
 	{
+		// ensure the key is unique
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
-		pairs.append(toAdd);
+		if ( find( k ) == null ) {
+			pairs.append(toAdd);
+		}
 	}
 
 	/** Remove and return a record.
@@ -87,4 +88,14 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 		return pairs.length();
 	}
 
+	/** @return The Value of a key-value pair at a certain index
+	 * @param index The index of the value needed */
+	public KVpair <Key, E> getByIndex(int index) // needed in order to implement some WarehouseInventory functions
+	{
+		pairs.moveToPos(index);
+		KVpair <Key, E> temp = pairs.getValue();
+		pairs.moveToStart(); // move the curr back to start for next use
+		return temp;
+	}
+	
 }

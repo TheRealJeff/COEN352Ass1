@@ -7,8 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DictionaryJUnitTest {
-	
-	
+
 	private static ADTDictionary<Integer, String> dict;
 	  
 	@BeforeAll
@@ -45,7 +44,6 @@ public class DictionaryJUnitTest {
 		dict.insert(1, "blue");
 		dict.insert(2,"yellow");
 		dict.insert(3, "grey");
-		
 		dict.remove(3);
 		assertEquals("grey", dict.find(3), "remove failed");
 		
@@ -72,7 +70,6 @@ public class DictionaryJUnitTest {
 		dict.insert(1, "blue");
 		dict.insert(2,"yellow");
 		dict.insert(3, "grey");
-		
 		assertEquals("grey", dict.find(3), "find failed"); 
 	}
 
@@ -81,8 +78,6 @@ public class DictionaryJUnitTest {
 	void testSize() {
 		dict.clear();
 		dict.insert(0, "red");
-	
-		
 		assertEquals(1, dict.size(), "size failed, size is not as expected");
 	}
 
