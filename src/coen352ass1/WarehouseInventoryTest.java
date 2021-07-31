@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class WarehouseInventoryTest {
 
+	//Note: All tests should succeed
+
 	@Test
 	void testInsert() {
 		WarehouseInventory db1 = new WarehouseInventory();
