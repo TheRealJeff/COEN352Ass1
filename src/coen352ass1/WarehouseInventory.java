@@ -2,42 +2,6 @@ package coen352ass1;
 
 public class WarehouseInventory {
 
-
-	//TODO: create new test file for this class that will correspond to the 9 tasks of problem 5
-/*
- * 
- * 	//TODO: implement new methods from the ADT and determine what other code items we need from the 9 tasks of problem 5
-	@Override
-	public void clear() {
-
-	}
-
-	@Override
-	public void insert(Object k, Object o) {
-
-	}
-
-	@Override
-	public Object remove(Object k) {
-		return null;
-	}
-
-	@Override
-	public Object removeAny() {
-		return null;
-	}
-
-	@Override
-	public Object find(Object k) {
-		return null;
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}*/
-
-
 	DLDictionary <String, InventoryRecord> invRecords; // sku will be the key
 	DLDictionary <String, BinRecord> binRecords; // binNumber will be the key
 	public WarehouseInventory()
@@ -72,13 +36,13 @@ public class WarehouseInventory {
 	// insert functions: the user can insert BinRecords or InventoryRecords
 	
 	// inserting InventoryRecords
-	public void insert(String sku, InventoryRecord inv)
+	public void insert(String sku, InventoryRecord invRec)
 	{
-		invRecords.insert(sku, inv);
+		invRecords.insert(sku, invRec);
 	}
-	public void insert(InventoryRecord inv)
+	public void insert(InventoryRecord invRec)
 	{
-		invRecords.insert(inv.getSku(), inv);
+		invRecords.insert(invRec.getSku(), invRec);
 	}
 	public void insert(String [] skuArr, InventoryRecord[] invArr)
 	{
@@ -136,6 +100,8 @@ public class WarehouseInventory {
 			binRecords.insert(binArr[i].getBinNum(), binArr[i]);
 		}
 	}
+
+	//remove Records
 	public InventoryRecord removeInvRecord(String sku)
 	{
 		return invRecords.remove(sku); // use remove function of DLDictionary
@@ -149,6 +115,8 @@ public class WarehouseInventory {
 		invRecords.clear();
 		binRecords.clear();
 	}
+
+	//find record
 	public InventoryRecord findInvRecord(String sku)
 	{
 		return invRecords.find(sku);
@@ -157,10 +125,17 @@ public class WarehouseInventory {
 	{
 		return binRecords.find(binNum);
 	}
+
+	//Find number of inventories
 	public int numInvRecords() // return the number of inventories in the database
 	{
 		return invRecords.size();
 	}
+	public int numBins() { //return number of bins in the database
+		return binRecords.size();
+	}
+
+	//return total inventory value
 	public long totalInventoryValue()
 	{
 		long sumOfValues = 0;
@@ -185,6 +160,7 @@ public class WarehouseInventory {
 		}
 		return reorderedRecords;
 	}
+
 	// return sku strings associated with argument value
 	public DList<String> getByValue(InventoryRecord valToFind)
 	{
@@ -205,7 +181,7 @@ public class WarehouseInventory {
 	{
 		DList<String> keysMatchingValue;
 		keysMatchingValue = new DList <String> ();
-		for(int i = 0; i < invRecords.size(); i++)
+		for(int i = 0; i < binRecords.size(); i++)
 		{
 			if(valToFind.sameAs(binRecords.getByIndex(i).value()))
 			{

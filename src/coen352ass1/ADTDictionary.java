@@ -1,15 +1,10 @@
 package coen352ass1;
 
-
-
 /** Source code example for "A Practical Introduction to Data
 Structures and Algorithm Analysis, 3rd Edition (Java)" 
 by Clifford A. Shaffer
 Copyright 2008-2011 by Clifford A. Shaffer
 */
-
-//TODO: Add methods such as findByValue and createDescendingIndex
-//The createDescendingIndex creates a new list with order dictated by passed argument, that will sort list based on specific record value (qty for example)
 
 /** The Dictionary abstract class. */
 public interface ADTDictionary<Key, E> {

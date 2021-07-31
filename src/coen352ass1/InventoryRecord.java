@@ -11,9 +11,7 @@ public class InventoryRecord {
 	private long qty;
 	private long reorderQty;
 	private long cost;
-	// private long inventoryValue; I replaced this with a function inventory_value()
 	private long pickQty;
-	// private boolean reorderFlag; I replaced this with a function reordered()
 
 	public InventoryRecord()
 	{
@@ -126,35 +124,20 @@ public class InventoryRecord {
 		pickQty = pick;
 	}
 
-	// replaced with functions reordered() and inventory_value()
-	/*public long getInventoryValue() {
-		return inventoryValue;
-	}
-
-	public void setInventoryValue(long inventoryValue) {
-		this.inventoryValue = inventoryValue;
-	}
-
-	public boolean isReorderFlag() {
-		return reorderFlag;
-	}
-
-	public void setReorderFlag(boolean reorderFlag) {
-		this.reorderFlag = reorderFlag;
-	}*/
-
-	//TODO: Check if we need these functions
 
 	// determine if the InventoryRecord is reordered: if reorder quantity exceeds the quantity, the inventory is reordered
 	public boolean reordered()
 	{
 		return (reorderQty > qty);
 	}
+
 	// calculate the inventory value by finding product of quantity and cost per item
 	public double inventory_value()
 	{
 		return qty * cost;
 	}
+
+	//determine is passed record is identical to the record calling the method
 	public boolean sameAs(InventoryRecord toCompare) // will be needed for the finding of record given a key
 	{
 		return 

@@ -27,6 +27,7 @@ public class BinRecord {
 		height = hg;
 		length = le;
 	}
+
 	// getters
 	public String getBinNum()
 	{
@@ -52,6 +53,7 @@ public class BinRecord {
 	{
 		return length;
 	}
+
 	// setters
 	public void setBinNum(String num)
 	{
@@ -77,6 +79,7 @@ public class BinRecord {
 	{
 		length = len;
 	}
+
 	public boolean sameAs(BinRecord toCompare)
 	{
 		return 

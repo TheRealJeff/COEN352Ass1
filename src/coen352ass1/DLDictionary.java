@@ -1,10 +1,6 @@
 package coen352ass1;
 
-// ADD: CHECK TO ENSURE KEY IS UNIQUE
-// problem 3: DList-based dictionary implementation
 public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
-
-	//TODO: implement new methods from the ADT
 
 	DList<KVpair <Key, E>> pairs; // DList holds pairs
 	DLDictionary()
@@ -23,7 +19,6 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	  @param e The record being inserted. */
 	public void insert(Key k, E e)
 	{
-		// ensure the key does not already exist in the dictionary
 		KVpair<Key, E> toAdd = new KVpair <Key, E>(k, e);
 		if ( find( k ) == null ) {
 			pairs.append(toAdd);
@@ -91,6 +86,9 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	{
 		return pairs.length();
 	}
+
+	/** @return The Value of a key-value pair at a certain index
+	 * @param index The index of the value needed */
 	public KVpair <Key, E> getByIndex(int index) // needed in order to implement some WarehouseInventory functions
 	{
 		pairs.moveToPos(index);
@@ -99,5 +97,4 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 		return temp;
 	}
 	
-
 }

@@ -6,8 +6,6 @@ by Clifford A. Shaffer
 Copyright 2008-2011 by Clifford A. Shaffer
 */
 
-//TODO: Add comparable method to compare key-value pairs? Check screenshot in Slack
-
 /** Container class for a key-value pair */
 class KVpair <Key, E> {
 private Key k;
