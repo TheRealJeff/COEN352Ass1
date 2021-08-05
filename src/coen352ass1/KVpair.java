@@ -7,7 +7,7 @@ Copyright 2008-2011 by Clifford A. Shaffer
 */
 
 /** Container class for a key-value pair */
-class KVpair <Key, E> {
+class KVpair <Key, E extends Comparable<E>> implements Comparable <KVpair <Key, E>>{
 private Key k;
 private E e;
 
@@ -27,4 +27,8 @@ public Key key() { return k; }
 
 public E value() { return e; }
 
+public int compareTo(KVpair <Key, E> other)
+{
+	return this.value().compareTo(other.value());
+}
 }
