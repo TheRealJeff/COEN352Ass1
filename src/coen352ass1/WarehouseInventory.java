@@ -190,6 +190,97 @@ public class WarehouseInventory {
 		}
 		return keysMatchingValue;
 	}
+	
+	public void HeapSort()
+	{
+	// create array of inventory records (same contents as linked list invRecords)
+	InventoryRecord [] arr = new InventoryRecord [invRecords.size()];
+
+	for(int i = 0; i < invRecords.size(); i++)
+	{
+	arr[i] = invRecords.getByIndex(i).value();
+	}
+
+	// perform heapsort
+	// use algorithm as seen in class
+
+	MaxHeap <InventoryRecord> hp = new MaxHeap<InventoryRecord> (arr, arr.length, arr.length);
+
+	for(int j = 0; j < arr.length; j++)
+	{
+	hp.removemax();
+	}
+
+	// clear contents of invRecords
+	invRecords.clear();
+	// insert with new order
+	this.insert(arr);
+	}
+
+	public void QuickSort()
+	{
+	// create array of inventory records (same contents as linked list invRecords)
+	InventoryRecord [] arr = new InventoryRecord [invRecords.size()];
+
+	for(int i = 0; i < invRecords.size(); i++)
+	{
+		arr[i] = invRecords.getByIndex(i).value();
+	}
+
+	qsorthelp(arr, 0, arr.length - 1);
+
+
+	// clear contents of invRecords
+	invRecords.clear();
+	// insert with new order
+	this.insert(arr);
+	}
+
+	public void qsorthelp(InventoryRecord [] arr, int i, int j)
+	{
+	int pivot = findpivot(arr, i, j);
+
+	// swap pivot and last element
+	InventoryRecord temp = arr[pivot];
+	arr[pivot] = arr[j];
+	arr[j] = temp;
+
+	// first position in right subarray will be mid
+	int mid = partition(arr, i - 1, j, arr[j]);
+	// swap pivot and last element
+	InventoryRecord temp2 = arr[mid];
+	arr[mid] = arr[j];
+	arr[j] = temp2;
+
+	if((mid - i) > 1) 
+	qsorthelp(arr, i, mid - i);
+	if((j - mid) > 1)
+	qsorthelp(arr, mid + 1, j);
+	}
+
+
+	static private int findpivot(InventoryRecord [] arr, int i, int j)
+	{
+		return ((i + j) / 2);
+	}
+
+	static private int partition(InventoryRecord [] arr, int left, int right, InventoryRecord pivot)
+	{
+		do
+		{
+			while(arr[++left].compareTo(pivot) < 0);
+
+			while((right != 0) && (arr[--right].compareTo(pivot) > 0));
+
+			// swap left and right elements
+
+			InventoryRecord temp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = temp;
+		} while (left < right); // stop iterating when the two iterators cross
+
+	return left;
+	}
 
 	public  int[] createIndex() {
 
