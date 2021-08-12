@@ -1,6 +1,8 @@
 package coen352ass1;
 
-public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
+import java.util.Arrays;
+
+public class DLDictionary<Key, E extends Comparable<E>> implements ADTDictionary<Key, E> {
 
 	DList<KVpair <Key, E>> pairs; // DList holds pairs
 	DLDictionary()
@@ -97,5 +99,48 @@ public class DLDictionary<Key, E> implements ADTDictionary<Key, E> {
 		pairs.moveToStart(); // move the curr back to start for next use
 		return temp;
 	}
-	
+
+	/**
+	 * @param
+	 * @return Int array with reverse order of the key values
+	 */
+	public int[] createIndex() {
+		int [] listIndex = new int[pairs.length()];
+
+		for ( int i = 0; i < pairs.length(); i++ ) {
+			listIndex[ i ] = i;
+		}
+
+		DList<KVpair<Key, E>> tempDict = pairs;
+
+		for ( int i = 0; i < listIndex.length - 1; i++ ) {
+			int swapIndex = listIndex.length - 1;
+			int tempDictPos = 0;
+			int removeIndex = 0;
+			int compareValue;
+			
+			KVpair largeElement;
+			tempDict.moveToEnd();
+			tempDict.prev();
+			largeElement = tempDict.getValue();
+			tempDict.moveToStart();
+			for ( int j = listIndex.length - tempDict.length() ; j < listIndex.length ; j++ ) {
+				compareValue = tempDict.getValue().compareTo(largeElement);
+				if ( tempDict.getValue().compareTo( largeElement ) > 0 ) {
+					largeElement = tempDict.getValue();
+					swapIndex = j;
+					removeIndex = tempDictPos;
+				}
+				tempDictPos++;
+				tempDict.next();
+			}
+			tempDict.moveToPos(removeIndex);
+			tempDict.remove();
+			DSutil.swap( listIndex, i, swapIndex );
+		}
+		
+		System.out.println("Result of createIndex: " + Arrays.toString(listIndex) + "\n");
+
+		return listIndex;
+	}
 }

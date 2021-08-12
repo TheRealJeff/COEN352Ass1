@@ -7,7 +7,7 @@ Copyright 2008-2011 by Clifford A. Shaffer
 */
 
 /** Dictionary implemented by unsorted array-based list. */
-public class ALDictionary<Key, E> implements ADTDictionary<Key, E> {
+public class ALDictionary<Key, E extends Comparable<E>> implements ADTDictionary<Key, E> {
 	
 	private static final int defaultSize = 100; // Default size
 	
@@ -68,5 +68,10 @@ public class ALDictionary<Key, E> implements ADTDictionary<Key, E> {
 	/** @return List size */
 	public int size() { 
 		return list.length(); 
+	}
+
+	@Override
+	public int[] createIndex() {
+		return new int[0];
 	}
 }

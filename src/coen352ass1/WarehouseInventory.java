@@ -190,5 +190,12 @@ public class WarehouseInventory {
 		}
 		return keysMatchingValue;
 	}
+
+	public  int[] createIndex() {
+
+		int [] listIndex = invRecords.createIndex();
+
+		return listIndex;
+	}
 	
 }

@@ -109,4 +109,11 @@ class WarehouseInventoryTest {
 		assertEquals(4649, db9.totalInventoryValue(), "Total value is not correct");
 	}
 
+	@Test
+	void testCreateIndex() {
+		WarehouseInventory db10 = new WarehouseInventory();
+
+		assertArrayEquals( new int[]{1, 9, 0, 3, 5, 4, 8, 10, 6, 7, 2}, db10.createIndex(), "Arrays don't match" );
+	}
+
 }
