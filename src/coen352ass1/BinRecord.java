@@ -1,6 +1,6 @@
 package coen352ass1;
 
-public class BinRecord {
+public class BinRecord implements Comparable<BinRecord> {
 	private String binNum;
 	private String description;
 	private String location;
@@ -90,5 +90,10 @@ public class BinRecord {
 		(height == toCompare.height) &&
 		(length == toCompare.length); 
 		// two InventoryRecord objects are called the same iff all fields are the same (except binNumber)
+	}
+
+	@Override
+	public int compareTo(BinRecord o) {
+		return 0;
 	}
 }

@@ -1,6 +1,6 @@
 package coen352ass1;
 
-public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
+public class LLDictionary<Key, E extends Comparable<E>> implements ADTDictionary<Key, E> {
 
 	// store a linked list of key-value pairs
 	private LList<KVpair <Key, E>> pairs;
@@ -88,6 +88,11 @@ public class LLDictionary<Key, E> implements ADTDictionary<Key, E> {
 	public int size()
 	{
 	return pairs.length();
+	}
+
+	@Override
+	public int[] createIndex() {
+		return new int[0];
 	}
 
 }

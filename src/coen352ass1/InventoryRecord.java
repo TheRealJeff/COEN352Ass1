@@ -1,7 +1,7 @@
 package coen352ass1;
 
 // objects of this class will have all information from first two Excel sheets
-public class InventoryRecord {
+public class InventoryRecord implements Comparable <InventoryRecord>{
 	private String sku;
 	private String description;
 	private String bin;
@@ -151,5 +151,12 @@ public class InventoryRecord {
 		(pickQty == toCompare.pickQty) &&
 		(orderNum == toCompare.orderNum);
 		// two InventoryRecord objects are called the same iff all fields are the same (except SKU)
+	}
+	
+	// implement compareTo
+	public int compareTo(InventoryRecord other)
+	{
+		// inventory value is a double, need to cast as an int
+		return (int) (this.inventory_value() - other.inventory_value());
 	}
 }
