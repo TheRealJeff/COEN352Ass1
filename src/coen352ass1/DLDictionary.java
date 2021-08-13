@@ -101,45 +101,53 @@ public class DLDictionary<Key, E extends Comparable<E>> implements ADTDictionary
 	}
 
 	/**
-	 * @param
 	 * @return Int array with reverse order of the key values
+	 * createIndex uses a modified Selection sort to return the reverse order of Inventory Values
+	 * In terms of comparisons and swaps, the Asymptotic Analysis stays the same
+	 * Comparisons: big theta ( n^2 )
+	 * Swaps: big theta ( n )
+	 * createIndex adds a factor of big theta ( n ) for creating an array that holds the indices
+	 * It also adds some factors of constant time to account for the processing of the Dictionary items
 	 */
 	public int[] createIndex() {
 		int [] listIndex = new int[pairs.length()];
+		DList<KVpair<Key, E>> tempDict = pairs;
 
 		for ( int i = 0; i < pairs.length(); i++ ) {
 			listIndex[ i ] = i;
 		}
 
-		DList<KVpair<Key, E>> tempDict = pairs;
-
 		for ( int i = 0; i < listIndex.length - 1; i++ ) {
-			int swapIndex = listIndex.length - 1;
-			int tempDictPos = 0;
-			int removeIndex = 0;
-			int compareValue;
-			
+			int swapIndex = i;
 			KVpair largeElement;
+
+			//largeElement will be the variable to contain the largest Inventory value
+			tempDict.moveToPos( i );
+			largeElement = tempDict.getValue();
 			tempDict.moveToEnd();
 			tempDict.prev();
-			largeElement = tempDict.getValue();
-			tempDict.moveToStart();
-			for ( int j = listIndex.length - tempDict.length() ; j < listIndex.length ; j++ ) {
-				compareValue = tempDict.getValue().compareTo(largeElement);
+
+			for ( int j = listIndex.length - 1; j > i ; j-- ) {
 				if ( tempDict.getValue().compareTo( largeElement ) > 0 ) {
 					largeElement = tempDict.getValue();
 					swapIndex = j;
-					removeIndex = tempDictPos;
 				}
-				tempDictPos++;
-				tempDict.next();
+				tempDict.prev();
 			}
-			tempDict.moveToPos(removeIndex);
-			tempDict.remove();
-			DSutil.swap( listIndex, i, swapIndex );
+			if ( swapIndex != i ) {
+				//Swap procedure for the Dictionary
+				tempDict.moveToPos(swapIndex);
+				KVpair swapElement = tempDict.remove();
+				tempDict.moveToPos(i);
+				tempDict.insert(swapElement);
+				tempDict.next();
+				swapElement = tempDict.remove();
+				tempDict.moveToPos(swapIndex);
+				tempDict.insert(swapElement);
+			}
+			//Swap indices in the listIndex return array
+			DSutil.swap(listIndex, i, swapIndex);
 		}
-		
-		System.out.println("Result of createIndex: " + Arrays.toString(listIndex) + "\n");
 
 		return listIndex;
 	}
