@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class WarehouseInventoryTest {
-
+	
 	//Note: All tests should succeed
 
 	@Test
@@ -115,5 +115,32 @@ class WarehouseInventoryTest {
 
 		assertArrayEquals( new int[]{1, 9, 0, 3, 5, 4, 8, 10, 6, 7, 2}, db10.createIndex(), "Arrays don't match" );
 	}
+	
+	@Test
+	public void testHeapSort()
+	{
+		// initializes with all the values given in Excel sheet (unordered)
+		WarehouseInventory db1 = new WarehouseInventory ();
+		db1.HeapSort();
+		int count = 0;
+		while(count < db1.numInvRecords() - 1)
+		{
+			assertTrue(db1.getInvRecordByIndex(count).compareTo(db1.getInvRecordByIndex(count + 1)) <= 0);
+			count++;
+		}
+	}
 
+	@Test
+	public void testQuickSort()
+	{
+		// initializes with al the values given in Excel sheet (unordered)
+		WarehouseInventory db1 = new WarehouseInventory ();
+		db1.QuickSort();
+		int count = 0;
+		while(count < db1.numInvRecords() - 1)
+		{
+			assertTrue(db1.getInvRecordByIndex(count).compareTo(db1.getInvRecordByIndex(count + 1)) <= 0);
+			count++;
+		}
+	}
 }

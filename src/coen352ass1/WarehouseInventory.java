@@ -202,13 +202,13 @@ public class WarehouseInventory {
 	}
 
 	// perform heapsort
-	// use algorithm as seen in class
+	// use algorithm as seen in class, with MaxHeap structure provided
 
 	MaxHeap <InventoryRecord> hp = new MaxHeap<InventoryRecord> (arr, arr.length, arr.length);
 
 	for(int j = 0; j < arr.length; j++)
 	{
-	hp.removemax();
+		hp.removemax();
 	}
 
 	// clear contents of invRecords
@@ -217,6 +217,25 @@ public class WarehouseInventory {
 	this.insert(arr);
 	}
 
+	
+	// to test sorting functions
+	public void printAllInventoryRecordInfo()
+	{
+		for(int n = 0; n < invRecords.size(); n++)
+		{
+			System.out.println("Inventory Value: " + invRecords.getByIndex(n).value().inventory_value());
+		}
+	}
+
+	public  int[] createIndex() {
+
+		int [] listIndex = invRecords.createIndex();
+
+		return listIndex;
+	}
+	
+	// implement QuickSort by adapting methods seen in class
+	// simply need to adapt the provided functions to this class
 	public void QuickSort()
 	{
 	// create array of inventory records (same contents as linked list invRecords)
@@ -227,66 +246,58 @@ public class WarehouseInventory {
 		arr[i] = invRecords.getByIndex(i).value();
 	}
 
-	qsorthelp(arr, 0, arr.length - 1);
-
+	qsorthelp(arr, 0, arr.length - 1); // call method to sort array
 
 	// clear contents of invRecords
 	invRecords.clear();
 	// insert with new order
 	this.insert(arr);
 	}
-
-	public void qsorthelp(InventoryRecord [] arr, int i, int j)
+	
+	static void qsorthelp(InventoryRecord[] arr, int i, int j) 
 	{
-	int pivot = findpivot(arr, i, j);
-
-	// swap pivot and last element
-	InventoryRecord temp = arr[pivot];
-	arr[pivot] = arr[j];
-	arr[j] = temp;
-
-	// first position in right subarray will be mid
-	int mid = partition(arr, i - 1, j, arr[j]);
-	// swap pivot and last element
-	InventoryRecord temp2 = arr[mid];
-	arr[mid] = arr[j];
-	arr[j] = temp2;
-
-	if((mid - i) > 1) 
-	qsorthelp(arr, i, mid - i);
-	if((j - mid) > 1)
-	qsorthelp(arr, mid + 1, j);
+		int pivot= findpivot(arr, i, j); // Pick a pivot, our function uses middle of array
+		swap(arr, pivot, j); // Stick pivot at end
+		// mid will be the first position in the right subarray
+		int mid = partition(arr, i-1, j, arr[j]);
+		swap(arr, mid, j); // Put pivot in place
+		if ((mid-i) > 1) 
+			qsorthelp(arr, i, mid-1); // Sort left partition
+		if ((j-mid) > 1) 
+			qsorthelp(arr, mid+1, j); // Sort right partition
+	}
+	
+	// choose middle of i and j to place pivot in middle of array
+	static int findpivot(InventoryRecord[] A, int i, int j)
+	{ 
+		return (i+j)/2; 
 	}
 
-
-	static private int findpivot(InventoryRecord [] arr, int i, int j)
+	static int partition(InventoryRecord[] arr, int left, int right, InventoryRecord pivot) 
 	{
-		return ((i + j) / 2);
-	}
-
-	static private int partition(InventoryRecord [] arr, int left, int right, InventoryRecord pivot)
-	{
-		do
+		do 
 		{
-			while(arr[++left].compareTo(pivot) < 0);
-
-			while((right != 0) && (arr[--right].compareTo(pivot) > 0));
-
-			// swap left and right elements
-
-			InventoryRecord temp = arr[left];
-			arr[left] = arr[right];
-			arr[right] = temp;
-		} while (left < right); // stop iterating when the two iterators cross
-
-	return left;
+			// shift the indices until they cross
+			// keep shifting 
+			while (arr[++left].compareTo(pivot)<0);
+			while ((right!=0) && (arr[--right].compareTo(pivot)>0));
+			swap(arr, left, right); // Swap out-of-place values
+		} while (left < right); // Stop when indices cross
+		swap(arr, left, right); 
+		return left; // Return first position in right partition
 	}
-
-	public  int[] createIndex() {
-
-		int [] listIndex = invRecords.createIndex();
-
-		return listIndex;
+	
+	// method to facilitate swapping
+	static private <E> void swap(E [] arr, int i, int j)
+	{
+		E temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	
+	public InventoryRecord getInvRecordByIndex(int i)
+	{
+		return invRecords.getByIndex(i).value();
 	}
 	
 }
